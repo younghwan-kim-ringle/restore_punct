@@ -73,6 +73,16 @@ elif args.language == 'english-bangla':
     test_bn_asr = Dataset(os.path.join(args.data_path, 'bn/test_asr'), tokenizer=tokenizer, sequence_len=sequence_len,
                           token_style=token_style, is_train=False)
     test_set = [val_set, test_set_ref, test_set_asr, test_set_news, test_bn_ref, test_bn_asr]
+elif args.language == 'fine_tuning':
+    train_set = Dataset(os.path.join(args.data_path, 'train_dataset'), tokenizer=tokenizer, sequence_len=sequence_len,
+                        token_style=token_style, is_train=True, augment_rate=ar, augment_type=aug_type)
+    val_set = Dataset(os.path.join(args.data_path, 'valid_dataset'), tokenizer=tokenizer, sequence_len=sequence_len,
+                      token_style=token_style, is_train=False)
+    test_set_ref = Dataset(os.path.join(args.data_path, 'test_dataset'), tokenizer=tokenizer, sequence_len=sequence_len,
+                           token_style=token_style, is_train=False)
+
+    test_set = [val_set, test_set_ref]
+
 else:
     raise ValueError('Incorrect language argument for Dataset')
 
