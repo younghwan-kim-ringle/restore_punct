@@ -102,6 +102,13 @@ deep_punctuation.to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(deep_punctuation.parameters(), lr=args.lr, weight_decay=args.decay)
 
+try:
+    pretrain_path = args.pretrain
+    deep_punctuation.load_state_dict(torch.load(pretrain_path))
+    print(f"pretrain_mdoel {pretrain_path} is loaded !")
+except:
+    print("pretrain model load failed")
+
 
 def validate(data_loader):
     """
