@@ -103,7 +103,7 @@ criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(deep_punctuation.parameters(), lr=args.lr, weight_decay=args.decay)
 
 try:
-    pretrain_path = args.pretrain
+    pretrain_path = args.pretrain_path
     deep_punctuation.load_state_dict(torch.load(pretrain_path))
     print(f"pretrain_mdoel {pretrain_path} is loaded !")
 except:
