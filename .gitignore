@@ -132,3 +132,4 @@ dmypy.json
 .venv/
 roberta-large-en.pt
 ringle_dataset/
+.DS_Store
