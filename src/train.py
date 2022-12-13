@@ -76,11 +76,13 @@ elif args.language == 'english-bangla':
 elif args.language == 'fine_tuning':
     train_set = Dataset(os.path.join(args.data_path, 'train_dataset'), tokenizer=tokenizer, sequence_len=sequence_len,
                         token_style=token_style, is_train=True, augment_rate=ar, augment_type=aug_type)
+    print("train_dataset load success")
     val_set = Dataset(os.path.join(args.data_path, 'valid_dataset'), tokenizer=tokenizer, sequence_len=sequence_len,
                       token_style=token_style, is_train=False)
+    print("valid_dataset load success")
     test_set_ref = Dataset(os.path.join(args.data_path, 'test_dataset'), tokenizer=tokenizer, sequence_len=sequence_len,
                            token_style=token_style, is_train=False)
-
+    print("test_dataset load success")
     test_set = [val_set, test_set_ref]
 
 else:
