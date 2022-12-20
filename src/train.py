@@ -84,7 +84,28 @@ elif args.language == 'fine_tuning':
                            token_style=token_style, is_train=False)
     print("test_dataset load success")
     test_set = [val_set, test_set_ref]
-
+elif args.language == 'fine_tuning_balance':
+    train_set = Dataset(os.path.join(args.data_path, 'trainset_balance_1220'), tokenizer=tokenizer, sequence_len=sequence_len,
+                        token_style=token_style, is_train=True, augment_rate=ar, augment_type=aug_type)
+    print("train_dataset load success")
+    val_set = Dataset(os.path.join(args.data_path, 'testset_balance_1220'), tokenizer=tokenizer, sequence_len=sequence_len,
+                      token_style=token_style, is_train=False)
+    print("valid_dataset load success")
+    test_set_ref = Dataset(os.path.join(args.data_path, 'testset_balance_1220'), tokenizer=tokenizer, sequence_len=sequence_len,
+                           token_style=token_style, is_train=False)
+    print("test_dataset load success")
+    test_set = [val_set, test_set_ref]
+elif args.language == 'fine_tuning_over_c6':
+    train_set = Dataset(os.path.join(args.data_path, 'trainset_over_c6_1220'), tokenizer=tokenizer, sequence_len=sequence_len,
+                        token_style=token_style, is_train=True, augment_rate=ar, augment_type=aug_type)
+    print("train_dataset load success")
+    val_set = Dataset(os.path.join(args.data_path, 'testset_over_c6_1220'), tokenizer=tokenizer, sequence_len=sequence_len,
+                      token_style=token_style, is_train=False)
+    print("valid_dataset load success")
+    test_set_ref = Dataset(os.path.join(args.data_path, 'testset_over_c6_1220'), tokenizer=tokenizer, sequence_len=sequence_len,
+                           token_style=token_style, is_train=False)
+    print("test_dataset load success")
+    test_set = [val_set, test_set_ref]
 else:
     raise ValueError('Incorrect language argument for Dataset')
 
