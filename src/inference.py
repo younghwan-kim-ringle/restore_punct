@@ -106,7 +106,7 @@ def inference2():
     ## input이 list인 경우
     deep_punctuation.load_state_dict(torch.load(model_save_path))
     deep_punctuation.eval()
-    total_text = ""
+    text_list = []
     with open(args.in_file, 'r', encoding='utf-8') as f:
         sents = f.readlines()
     for text in sents:
@@ -161,12 +161,10 @@ def inference2():
                 if y_mask[i] == 1:
                     result += words_original_case[decode_idx] + punctuation_map[y_predict[i].item()] + ' '
                     decode_idx += 1
-        total_text += result + '\n'
+        text_list.append(result)
 
-    print('Punctuated text')
-    print(total_text)
     with open(args.out_file, 'w', encoding='utf-8') as f:
-        f.write(total_text)
+        f.write('\n'.join(text_list))
 
 
 if __name__ == '__main__':
