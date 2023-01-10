@@ -14,7 +14,7 @@ parser.add_argument('--use-crf', default=False, type=lambda x: (str(x).lower() =
                     help='whether to use CRF layer or not')
 parser.add_argument('--language', default='en', type=str, help='language English (en) oe Bangla (bn)')
 parser.add_argument('--is-list', default=False, type=str, help='if input is list of string')
-parser.add_argument('--list_input', default=[], type=list, help='list of input')
+parser.add_argument('--list-input', default=[], type=list, help='list of input')
 parser.add_argument('--in-file', default='data/test_en.txt', type=str, help='path to inference file')
 parser.add_argument('--weight-path', default='xlm-roberta-large.pt', type=str, help='model weight path')
 parser.add_argument('--sequence-length', default=256, type=int,
