@@ -226,7 +226,8 @@ def inference_string():
                 result += words_original_case[decode_idx] + punctuation_map[y_predict[i].item()] + ' '
                 decode_idx += 1
     
-    return(result)
+    with open(args.out_file, 'w', encoding='utf-8') as f:
+        f.write(result)
 
 
 if __name__ == '__main__':
